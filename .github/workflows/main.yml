@@ -1,24 +1,25 @@
 name: Automated API tests using Postman CLI
 
-on: push
+on: [push]
 
 jobs:
-  automated-api-tests:
+  api-requests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2 # latest stable action
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16' 
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
 
-      - name: Install newman
-        run: npm install -g newman
+    - name: Install newman
+      run: npm install -g newman
 
-      - name: Run API tests
-        env:
-          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }} # Set Postman API key
-        run: |
-          newman run "https://api.getpostman.com/collections/23897168-6bea315a-b162-4078-afc6-d607f477e4c8?apikey=$POSTMAN_API_KEY" --environment "https://api.getpostman.com/environments/23897168-fecbbd6b-5f2c-48e2-b136-5b3802b06dea?apikey=$POSTMAN_API_KEY"
+    - name: Run collection using Newman
+      env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }} # Using your stored client_id
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }} # Using your stored client_secret
+      run: |
+        newman run path/to/your/collection.json -e path/to/your/environment.json --global-var "client_id=$CLIENT_ID" --global-var "client_secret=$CLIENT_SECRET"
