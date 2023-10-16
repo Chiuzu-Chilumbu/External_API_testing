@@ -14,12 +14,15 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Install newman
+    - name: Install Newman
       run: npm install -g newman
+
+    - name: List files in directory
+      run: ls -R
 
     - name: Run collection using Newman
       env:
         CLIENT_ID: ${{ secrets.CLIENT_ID }} # Using your stored client_id
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }} # Using your stored client_secret
       run: |
-        newman run path/to/your/collection.json -e path/to/your/environment.json --global-var "client_id=$CLIENT_ID" --global-var "client_secret=$CLIENT_SECRET"
+        newman run collection.json -e environment.json --global-var "client_id=$CLIENT_ID" --global-var "client_secret=$CLIENT_SECRET"
