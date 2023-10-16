@@ -1,28 +1,17 @@
 name: Automated API tests using Postman CLI
 
-on: [push]
+on: push
 
 jobs:
-  api-requests:
+  automated-api-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-
-    - name: Install Newman
-      run: npm install -g newman
-
-    - name: List files in directory
-      run: ls -R
-
-    - name: Run collection using Newman
-      env:
-        CLIENT_ID: ${{ secrets.CLIENT_ID }} # Using your stored client_id
-        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }} # Using your stored client_secret
-      run: |
-        newman run collection.json -e environment.json --global-var "client_id=$CLIENT_ID" --global-var "client_secret=$CLIENT_SECRET"
+      - uses: actions/checkout@v3
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run API tests
+        run: |
+          postman collection run "23897168-6bea315a-b162-4078-afc6-d607f477e4c8" -e "23897168-fecbbd6b-5f2c-48e2-b136-5b3802b06dea"
