@@ -10,3 +10,12 @@ Welcome to the ComfyWings-Python External API Testing Repository. This repositor
    
 3. **JavaScript Test Suites**:
    - Test suites within this repository have been meticulously crafted using JavaScript to ensure thorough and reliable API testing.
+
+## API Test Documentation
+
+Below is the API test documentation detailing the test cases and their outcomes:
+
+| Req Desc | TC ID | Test Description | Test Data | Expected Result | Actual Result | Test Execution | Defects | Def Desc | Notes |
+|----------|-------|------------------|-----------|-----------------|---------------|----------------|---------|----------|-------|
+| Token Authentication - Obtain Access Token | TC-01 | Verify that the environment variables are set and not empty. Post to obtain access token. | `{ "client_id": "xxxx", "client_secret": "xxxx", "grant_type": "client_credentials" }` | 200 OK, Token received in response, Environment variable set with token. | 200 OK, Token received, Environment variable set. | Pass | No | - | Response received in 643ms. |
+| Token Authentication - Get Token Information | TC-02 | Perform a GET request to verify the token information is correct. | - (Token from previous test) | 200 OK, Response contains the expected properties. | 200 OK, Expected properties present in response. | Pass | No | - | Response received in 284ms. |
