@@ -1,4 +1,4 @@
-# ComfyWings-Python External API Testing Repository
+# ComfyWings-Python External API Testing
 
 Welcome to the ComfyWings-Python External API Testing Repository. This repository has been specifically established to facilitate Continuous Integration/Continuous Deployment (CI/CD) pipeline activities for the Amadeus API, which is integral to the ComfyWings Python project. Key highlights of this repository include:
 
@@ -12,6 +12,18 @@ Welcome to the ComfyWings-Python External API Testing Repository. This repositor
    - Test suites within this repository have been meticulously crafted using JavaScript to ensure thorough and reliable API testing.
 
 ## API Test Documentation
+
+1. **Req Desc (Requirement Description)**: A brief description of what the API call is supposed to do or the specific requirement being tested.
+2. **TC ID (Test Case ID)**: A unique identifier for each test case.
+3. **Test Description**: A detailed description of what the test case will validate.
+4. **Test Data**: Any input data used for the test case.
+5. **Expected Result**: What the outcome should be if the API is working as intended.
+6. **Actual Result**: The actual outcome received when the test case is executed.
+7. **Test Execution**: Status of the test (e.g., Pass, Fail, Blocked, Not Executed).
+8. **Defects**: Whether any defects were found during the test (Yes/No).
+9. **Def Desc (Defect Description)**: A description of the defect, if any, including steps to reproduce, severity, and screenshots if applicable.
+10. **Notes**: Additional remarks or observations relevant to the test case.
+
 
 Below is the API test documentation detailing the test cases and their outcomes:
 
